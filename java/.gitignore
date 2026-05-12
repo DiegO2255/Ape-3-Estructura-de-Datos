@@ -1,0 +1,18 @@
+# Archivos compilados de Java
+*.class
+
+# Archivos ejecutables y objetos de C++
+*.exe
+*.o
+*.out
+
+# Carpetas de configuración de VS Code
+.vscode/
+
+# Archivos de sistema
+Thumbs.db
+.DS_Store
+
+# Opcional: Si quieres ignorar las capturas de pantalla
+Capturas*/
+*.png
