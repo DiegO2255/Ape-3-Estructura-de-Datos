@@ -8,8 +8,22 @@ struct Nodo {
     Nodo(int v) : valor(v), izquierdo(nullptr), derecho(nullptr) {}
 };
 
+// TODO: Implementa tu lógica aquí
 Nodo* invertir(Nodo* raiz) {
-    // TODO: Implementa tu lógica aquí
+    // Caso base: si el nodo es nulo, no hay nada que invertir
+    if (raiz == nullptr) {
+        return nullptr;
+    }
+
+    // Intercambiamos los hijos del nodo actual usando una variable temporal
+    Nodo* temporal = raiz->izquierdo;
+    raiz->izquierdo = raiz->derecho;
+    raiz->derecho = temporal;
+
+    // Aplicamos la misma lógica recursivamente a los subárboles
+    invertir(raiz->izquierdo);
+    invertir(raiz->derecho);
+
     return raiz;
 }
 

@@ -8,8 +8,22 @@ struct Nodo {
     Nodo(int v) : valor(v), izquierdo(nullptr), derecho(nullptr) {}
 };
 
+//TODO: Implementa tu lógica aquí
 Nodo* insertar(Nodo* raiz, int valor) {
-    // TODO: Implementa tu lógica aquí
+    // Si el árbol está vacío, creamos el nuevo nodo
+    if (raiz == nullptr) {
+        return new Nodo(valor);
+    }
+
+    // Si el valor es menor, insertamos en el subárbol izquierdo
+    if (valor < raiz->valor) {
+        raiz->izquierdo = insertar(raiz->izquierdo, valor);
+    } 
+    // Si el valor es mayor, insertamos en el subárbol derecho
+    else if (valor > raiz->valor) {
+        raiz->derecho = insertar(raiz->derecho, valor);
+    }
+
     return raiz;
 }
 

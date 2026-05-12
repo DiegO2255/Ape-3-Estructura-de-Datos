@@ -2,11 +2,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class  RecorridoInOrder {
-    public static void inOrderAux(Nodo nodo, List<Integer> resultado) {
-        // TODO: Implementa tu lógica de recorrido aquí
+    // TODO: Implementa tu lógica de recorrido aquí
+    static void inOrderAux(Nodo nodo, List<Integer> resultado) { //Quitamos el public para que la clase reciba y devulva datos
+        // Caso base: si el nodo es nulo, regresamos
+        if (nodo == null) {
+            return;
+        }
+
+        // 1. Visitar el subárbol izquierdo
+        inOrderAux(nodo.izquierdo, resultado);
+
+        // 2. Agregar el valor del nodo actual a la lista
+        resultado.add(nodo.valor);
+
+        // 3. Visitar el subárbol derecho
+        inOrderAux(nodo.derecho, resultado);
     }
 
-    public static List<Integer> recorridoInOrder(Nodo raiz) {
+    static List<Integer> recorridoInOrder(Nodo raiz) { //Quitamos el public para que la clase reciba y devulva datos
         List<Integer> resultado = new ArrayList<>();
         inOrderAux(raiz, resultado);
         return resultado;

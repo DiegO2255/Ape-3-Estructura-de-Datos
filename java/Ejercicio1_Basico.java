@@ -1,16 +1,18 @@
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 class NodoN {
+
     public int valor;
     public List<NodoN> hijos;
-    
+
     public NodoN(int valor) {
         this.valor = valor;
         this.hijos = new ArrayList<>();
     }
-    
+
     public NodoN(int valor, List<NodoN> hijos) {
         this.valor = valor;
         this.hijos = hijos;
@@ -18,9 +20,23 @@ class NodoN {
 }
 
 public class Ejercicio1_Basico {
-    public static int contarNodos(NodoN raiz) {
-        // TODO: Implementa tu lógica aquí. (Pista: usa recursividad)
-        return 0; 
+
+    static int contarNodos(NodoN raiz) { //Quitamos el public para que la clase reciba y devulva datos
+        //TODO: Implementa tu lógica aquí. Pista usa recursividad
+        // Caso base: si el nodo es nulo, no hay nodos que contar
+        if (raiz == null) {
+            return 0;
+        }
+
+        // Iniciamos el conteo en 1 (representando el nodo actual)
+        int total = 1;
+
+        // Usamos recursividad para sumar el conteo de todos los subárboles hijos
+        for (NodoN hijo : raiz.hijos) {
+            total += contarNodos(hijo);
+        }
+
+        return total;
     }
 
     public static void main(String[] args) {
@@ -36,7 +52,7 @@ public class Ejercicio1_Basico {
         NodoN n3 = new NodoN(3);
         NodoN n4 = new NodoN(4);
         NodoN raiz = new NodoN(1, Arrays.asList(n2, n3, n4));
-        
+
         System.out.println("--- Prueba Ejercicio 1 ---");
         System.out.println("Nodos esperados: 6");
         System.out.println("Nodos calculados: " + contarNodos(raiz));
